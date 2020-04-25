@@ -2,25 +2,25 @@
 
 Usar *psql* para conectar com o banco por ser mais simples, mas pode ser usado o pgAdmin.
 
-```
+```shell
 psql -d postgres -h localhost
 ```
 
 ## Criando um novo banco
 
-```
+```shell
 postgres=# CREATE DATABASE sql_101;
 ```
 
 ## Conectando com o banco
 
-```
+```shell
 postgres=# \c sql_101
 ```
 
 ## Criando uma estrutra simples
 
-```
+```sql
 CREATE TABLE public.consumer
 (
     id_consumer character varying(32) NOT NULL,
