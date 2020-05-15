@@ -1,5 +1,9 @@
 # Básico
 
+## Index
+
+## Convenções
+
 Usar *psql* para conectar com o banco por ser mais simples, mas pode ser usado o pgAdmin.
 
 ```shell
