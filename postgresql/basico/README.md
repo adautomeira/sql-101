@@ -2,9 +2,19 @@
 
 ## Index
 
-## Convenções
+1. [Conectando no servidor](#conectando_no_servidor)
+2. [Criando um novo banco](#criando_um_novo_banco)
+3. [Conectando no banco](#conectando_no_banco)
+4. [Schemas](#schemas)
+4. [Tabelas](#tabelas)
+5. [Relacionamentos](#relacionamentos)
+6. [Índices](#índices)
+7. [Consultas](#consultas)
+8. [Clients](#clients)
 
-Usar *psql* para conectar com o banco por ser mais simples, mas pode ser usado o pgAdmin.
+Esse tutorial usará o _client_ *psql* para conectar com o banco por ser mais simples e ter alguns comandos a mais. No tópico [Clients](#clients) será sugerido algumas outras ferramentas gratuitas de conexão com o banco PostgreSQL.
+
+## Conectando com o servidor
 
 ```shell
 psql -d postgres -h localhost
@@ -22,7 +32,11 @@ postgres=# CREATE DATABASE sql_101;
 postgres=# \c sql_101
 ```
 
-## Criando uma estrutra simples
+## Schemas
+
+TODO
+
+## Tabelas
 
 ```sql
 CREATE TABLE public.consumer
@@ -43,12 +57,16 @@ CREATE TABLE public.consumer_phone
 (
     id_phone bigint NOT NULL DEFAULT nextval('consumer_phone_id_phone_seq'::regclass),
     id_consumer character varying(32) NOT NULL,
-    no_phone character varying(12) COLLATE pg_catalog."default",
+    no_phone character varying(12),
     tp_phone "phone type",
     dt_creation timestamp with time zone,
     CONSTRAINT pk_phone PRIMARY KEY (id_phone)
 );
+```
 
+## Relacionamentos
+
+```sql
 ALTER TABLE public.consumer_phone
     ADD CONSTRAINT fk_consumer FOREIGN KEY (id_consumer_fk)
     REFERENCES public.consumer (id_consumer) MATCH SIMPLE
@@ -57,9 +75,9 @@ ALTER TABLE public.consumer_phone
 
 CREATE TABLE public.consumer_order
 (
-    id_consumer_order character varying(32) COLLATE pg_catalog."default" NOT NULL,
-    id_consumer_fk character varying(32) COLLATE pg_catalog."default" NOT NULL,
-    ds_consumer_order character varying(100) COLLATE pg_catalog."default",
+    id_consumer_order character varying(32) NOT NULL,
+    id_consumer_fk character varying(32) NOT NULL,
+    ds_consumer_order character varying(100),
     dt_creation timestamp with time zone,
     CONSTRAINT pk_consumer_order PRIMARY KEY (id_consumer_order),
     CONSTRAINT fk_consumer FOREIGN KEY (id_consumer_order)
@@ -70,3 +88,9 @@ CREATE TABLE public.consumer_order
 )
 
 ```
+
+## Índices
+
+## Consultas
+
+## Clients

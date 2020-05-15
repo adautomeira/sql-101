@@ -60,7 +60,7 @@ END$$;
 
 TODO
 
-### Índice por delimitados
+### Índice por valores delimitados
 
 TODO
 
@@ -86,9 +86,9 @@ TODO
 ````sql
 CREATE TABLE public.consumer_order_c
 (
-    id_consumer_order_c character varying(32) COLLATE pg_catalog."default" NOT NULL,
-    id_consumer_fk character varying(32) COLLATE pg_catalog."default" NOT NULL,
-    ds_consumer_order character varying(100) COLLATE pg_catalog."default",
+    id_consumer_order_c character varying(32) NOT NULL,
+    id_consumer_fk character varying(32) NOT NULL,
+    ds_consumer_order character varying(100),
     dt_creation timestamp with time zone,
     CONSTRAINT pk_consumer_order_c PRIMARY KEY (id_consumer_order_c, id_consumer_fk),
     CONSTRAINT fk_consumer_c FOREIGN KEY (id_consumer_fk)
@@ -105,9 +105,9 @@ TODO
 ````sql
 CREATE TABLE public.consumer_order_d
 (
-    id_consumer_order_d character varying(32) COLLATE pg_catalog."default" NOT NULL,
-    id_consumer_fk character varying(32) COLLATE pg_catalog."default" NOT NULL,
-    ds_consumer_order character varying(100) COLLATE pg_catalog."default",
+    id_consumer_order_d character varying(32) NOT NULL,
+    id_consumer_fk character varying(32) NOT NULL,
+    ds_consumer_order character varying(100),
     dt_creation timestamp with time zone,
     CONSTRAINT pk_consumer_order_d PRIMARY KEY (id_consumer_order_d, dt_creation),
     CONSTRAINT fk_consumer_d FOREIGN KEY (id_consumer_fk)
