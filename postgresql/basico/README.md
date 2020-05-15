@@ -2,9 +2,9 @@
 
 ## Index
 
-1. [Conectando no servidor](#conectando_no_servidor)
-2. [Criando um novo banco](#criando_um_novo_banco)
-3. [Conectando no banco](#conectando_no_banco)
+1. [Conectando no servidor](#conectando-no-servidor)
+2. [Criando um novo banco](#criando-um-novo-banco)
+3. [Conectando no banco](#conectando-no-banco)
 4. [Schemas](#schemas)
 4. [Tabelas](#tabelas)
 5. [Relacionamentos](#relacionamentos)
@@ -12,9 +12,9 @@
 7. [Consultas](#consultas)
 8. [Clients](#clients)
 
-Esse tutorial usará o _client_ *psql* para conectar com o banco por ser mais simples e ter alguns comandos a mais. No tópico [Clients](#clients) será sugerido algumas outras ferramentas gratuitas de conexão com o banco PostgreSQL.
+Esse guia usará o _client_ *psql* para conectar com o banco por ser mais simples e ter alguns comandos a mais. No tópico [Clients](#clients) será sugerido algumas outras ferramentas gratuitas de conexão com o banco PostgreSQL.
 
-## Conectando com o servidor
+## Conectando no servidor
 
 ```shell
 psql -d postgres -h localhost
@@ -26,7 +26,7 @@ psql -d postgres -h localhost
 postgres=# CREATE DATABASE sql_101;
 ```
 
-## Conectando com o banco
+## Conectando no banco
 
 ```shell
 postgres=# \c sql_101
@@ -34,12 +34,15 @@ postgres=# \c sql_101
 
 ## Schemas
 
+```sql
+CREATE SCHEMA app_main AUTHORIZATION postgres;
+```
 TODO
 
 ## Tabelas
 
 ```sql
-CREATE TABLE public.consumer
+CREATE TABLE app_main.consumer
 (
     id_consumer character varying(32) NOT NULL,
     ds_name character varying(100),
@@ -50,10 +53,10 @@ CREATE TABLE public.consumer
     CONSTRAINT pk_consumer PRIMARY KEY (id_consumer)
 );
 
-CREATE TYPE public."phone type" AS ENUM
+CREATE TYPE app_main."phone type" AS ENUM
     ('phone', 'cellphone', 'smartphone', 'fax');
 
-CREATE TABLE public.consumer_phone
+CREATE TABLE app_main.consumer_phone
 (
     id_phone bigint NOT NULL DEFAULT nextval('consumer_phone_id_phone_seq'::regclass),
     id_consumer character varying(32) NOT NULL,
@@ -67,13 +70,13 @@ CREATE TABLE public.consumer_phone
 ## Relacionamentos
 
 ```sql
-ALTER TABLE public.consumer_phone
+ALTER TABLE app_main.consumer_phone
     ADD CONSTRAINT fk_consumer FOREIGN KEY (id_consumer_fk)
     REFERENCES public.consumer (id_consumer) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE CASCADE;
 
-CREATE TABLE public.consumer_order
+CREATE TABLE app_main.consumer_order
 (
     id_consumer_order character varying(32) NOT NULL,
     id_consumer_fk character varying(32) NOT NULL,

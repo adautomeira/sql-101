@@ -5,9 +5,9 @@ Entendendo SQL com exemplos
 ## PostgreSQL
 1. [Básico](/postgresql/basico#básico)
 
-    1.1. [Conectando no servidor](/postgresql/basico#conectando_no_servidor)
-    1.2. [Criando um novo banco](/postgresql/basico#criando_um_novo_banco)
-    1.3. [Conectando no banco](/postgresql/basico#conectando_no_banco)
+    1.1. [Conectando no servidor](/postgresql/basico#conectando-no-banco)
+    1.2. [Criando um novo banco](/postgresql/basico#criando-um-novo-banco)
+    1.3. [Conectando no banco](/postgresql/basico#conectando-no-banco)
     1.4. [Schemas](/postgresql/basico#schemas)
     1.5. [Tabelas](/postgresql/basico#tabelas)
     1.6. [Relacionamentos](/postgresql/basico#relacionamentos)
