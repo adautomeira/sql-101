@@ -37,6 +37,7 @@ postgres=# \c sql_101
 ```sql
 CREATE SCHEMA app_main AUTHORIZATION postgres;
 ```
+
 TODO
 
 ## Tabelas

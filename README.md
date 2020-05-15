@@ -1,19 +1,15 @@
 # sql-101
 
-Entendendo SQL com exemplos
+Esse guia foi pensado como uma referêcia rápida sobre o funcionamento e alguns comandos dos principais SGBDs relacionais usados comercialmente, sendo separado por:
 
-## PostgreSQL
-1. [Básico](/postgresql/basico#básico)
+## Básico
 
-    1.1. [Conectando no servidor](/postgresql/basico#conectando-no-banco)
-    1.2. [Criando um novo banco](/postgresql/basico#criando-um-novo-banco)
-    1.3. [Conectando no banco](/postgresql/basico#conectando-no-banco)
-    1.4. [Schemas](/postgresql/basico#schemas)
-    1.5. [Tabelas](/postgresql/basico#tabelas)
-    1.6. [Relacionamentos](/postgresql/basico#relacionamentos)
-    1.7. [Índices](/postgresql/basico#índices)
-    1.8. [Consultas](/postgresql/basico#consultas)
-    1.9. [Clients](/postgresql/basico#clients)
+Apresentação dos conceitos mais básicos do funcionamentos dos SGBDs.
 
-2. [Desempenho](/postgresql/desempenho#desempenho)
-3. [Segurança](/postgresql/seguranca#segurança)
+## Desempenho
+
+Sugestões para otimização do desempenho sob determinados aspectos
+
+## Segurança
+
+Tópicos sobre segurança.

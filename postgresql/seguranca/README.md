@@ -2,6 +2,8 @@
 
 TODO
 
+## Grupos e Usuários
+
 ````sql
 CREATE ROLE rl_admin WITH
   NOLOGIN
@@ -69,3 +71,7 @@ CREATE ROLE user2 WITH
 
 GRANT rl_view TO user2;
 ````
+
+## Redaction
+
+TODO
