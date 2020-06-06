@@ -9,6 +9,7 @@
 4. [Tabelas](#tabelas)
 5. [Relacionamentos](#relacionamentos)
 6. [Índices](#índices)
+7. [Funções](#funções)
 7. [Consultas](#consultas)
 8. [Clients](#clients)
 
@@ -34,11 +35,28 @@ postgres=# \c sql_101
 
 ## Schemas
 
+Na criação de um novo banco o PostgreSQL cria um schema com o nome _public_ com permissão de acesso a todos os usuários, por padrão.
+
+```shell
+sql_101=# \dn
+```
+
+|Schema|
+|------|
+|public|
+
 ```sql
 CREATE SCHEMA app_main AUTHORIZATION postgres;
 ```
 
-TODO
+```shell
+sql_101=# \dn
+```
+
+|Schema  |
+|--------|
+|app_main|
+|public  |
 
 ## Tabelas
 
@@ -95,6 +113,20 @@ CREATE TABLE app_main.consumer_order
 
 ## Índices
 
+TODO
+
+## Funções
+
+TODO
+
+Usando o atributoSecurity Definer
+
+EXECUTE
+
 ## Consultas
 
+TODO
+
 ## Clients
+
+TODO
