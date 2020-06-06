@@ -119,7 +119,16 @@ TODO
 
 TODO
 
-Usando o atributoSecurity Definer
+````sql
+CREATE OR REPLACE FUNCTION 3chars(text character varying)
+    RETURNS character varying AS $$
+        BEGIN
+            RETURN substring(text FOR 3]);
+        END;
+$$ LANGUAGE plpgsql;
+````
+
+Usando o atributo _Security Definer_ é possível indicar o perfil e, respectivamente, o grau de permissão que será usado na execução da função.
 
 EXECUTE
 
