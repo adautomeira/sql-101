@@ -23,5 +23,8 @@
 
     1.10. [Clients](/postgresql/basico#clients)
 
+    1.11. [Migrations](/postgresql/basico#migrations)
+
 2. [Desempenho](/postgresql/desempenho#desempenho)
+
 3. [Segurança](/postgresql/seguranca#segurança)

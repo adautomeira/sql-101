@@ -41,9 +41,9 @@ Na criação de um novo banco o PostgreSQL cria um schema com o nome _public_ co
 sql_101=# \dn
 ```
 
-|Schema|
-|------|
-|public|
+|Name  |Owner   |
+|------|--------|
+|public|postgres|
 
 ```sql
 CREATE SCHEMA app_main AUTHORIZATION postgres;
@@ -53,10 +53,10 @@ CREATE SCHEMA app_main AUTHORIZATION postgres;
 sql_101=# \dn
 ```
 
-|Schema  |
-|--------|
-|app_main|
-|public  |
+|Name    |Owner   |
+|--------|--------|
+|app_main|postgres|
+|public  |postgres|
 
 ## Tabelas
 
@@ -123,7 +123,7 @@ TODO
 CREATE OR REPLACE FUNCTION 3chars(text character varying)
     RETURNS character varying AS $$
         BEGIN
-            RETURN substring(text FOR 3]);
+            RETURN substring(text FOR 3);
         END;
 $$ LANGUAGE plpgsql;
 ````
