@@ -6,12 +6,13 @@
 2. [Criando um novo banco](#criando-um-novo-banco)
 3. [Conectando no banco](#conectando-no-banco)
 4. [Schemas](#schemas)
-4. [Tabelas](#tabelas)
-5. [Relacionamentos](#relacionamentos)
-6. [Índices](#índices)
-7. [Funções](#funções)
-7. [Consultas](#consultas)
-8. [Clients](#clients)
+5. [Tabelas](#tabelas)
+6. [Relacionamentos](#relacionamentos)
+7. [Índices](#índices)
+8. [Funções](#funções)
+9. [Consultas](#consultas)
+10. [Clients](#clients)
+11. [Migrations](#migrations)
 
 Esse guia usará o _client_ *psql* para conectar com o banco por ser mais simples e ter alguns comandos a mais. No tópico [Clients](#clients) será sugerido algumas outras ferramentas gratuitas de conexão com o banco PostgreSQL.
 
@@ -136,6 +137,53 @@ EXECUTE
 
 TODO
 
+````sql
+-- CTE
+````
+
 ## Clients
 
-TODO
+[pgAdmin](https://www.pgadmin.org/)
+
+[DBeaver](https://dbeaver.io/)
+
+[HeidiSQL](https://www.heidisql.com/)
+
+## Migrations
+
+Fluxo automatizado para execução de scripts de banco de dados.
+
+````sql
+DO $BODY$
+    DECLARE
+        ds_column character varying;
+    BEGIN
+
+        -- Procurando por coluna 'nome_da_coluna' na tabela 'nome_da_tabela' no schema 'nome_do_schema'.
+
+        SELECT column_name INTO ds_column
+        FROM information_schema.columns
+        WHERE table_schema = 'nome_do_schema' -- Não é obrigatório
+          AND table_name = 'nome_da_tabela';  -- Não é obrigatório
+          AND column_name = 'nome_da_coluna';
+
+        -- Se a coluna não existir, faça...
+
+        IF ds_column IS NULL THEN
+
+            ALTER TABLE nome_da_tabela ADD COLUMN nome_da_coluna data_type;
+            RAISE NOTICE 'nome_da_coluna criada com sucesso';
+
+        -- Se a coluna já existir, faça...
+
+        ELSE
+
+            RAISE NOTICE 'A coluna ''nome_da_coluna'' já existe.';
+            ds_column := NULL; -- Devolvendo o valor para nulo, caso seja necessário criar outras colunas.
+        END IF;
+
+        /* Aqui pode colocar outro conjunto de SELECT e IF*/
+
+    END;
+$BODY$
+````
