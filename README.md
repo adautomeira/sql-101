@@ -1,10 +1,10 @@
 # sql-101
 
-Esse guia foi pensado como uma referêcia rápida sobre o funcionamento e alguns comandos dos principais SGBDs relacionais usados comercialmente, sendo separado por:
+Este *guia* foi pensado como uma referêcia rápida sobre o funcionamento dos principais SGBDs relacionais usados comercialmente e alguns de seus comandos, sendo estruturado da seguinte forma:
 
 ## Básico
 
-Apresentação dos conceitos mais básicos do funcionamentos dos SGBDs.
+Apresentação dos conceitos mais básicos do funcionamentos do SGBD.
 
 ## Desempenho
 
