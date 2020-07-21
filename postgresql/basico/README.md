@@ -36,7 +36,7 @@ postgres=# \c sql_101
 
 ## Schemas
 
-Na criação de um novo banco o PostgreSQL cria um schema com o nome _public_ com permissão de acesso a todos os usuários, por padrão.
+No momento da criação de um novo banco, o PostgreSQL cria um schema com o nome _public_ com permissão de acesso a todos os usuários, por padrão.
 
 ```shell
 sql_101=# \dn
@@ -47,7 +47,13 @@ sql_101=# \dn
 |public|postgres|
 
 ```sql
-CREATE SCHEMA app_main AUTHORIZATION postgres;
+CREATE SCHEMA app_main;
+```
+
+É possível modificar o proprietário (owner) do _schema_ usando o comando ALTER SCHEMA ... OWNER TO ...
+
+```sql
+ALTER SCHEMA app_main OWNER TO user1;
 ```
 
 ```shell
@@ -56,8 +62,14 @@ sql_101=# \dn
 
 |Name    |Owner   |
 |--------|--------|
-|app_main|postgres|
+|app_main|user1   |
 |public  |postgres|
+
+```shell
+sql_101=# \dn
+```
+
+Did not find any relations
 
 ## Tabelas
 
@@ -114,11 +126,39 @@ CREATE TABLE app_main.consumer_order
 
 ## Índices
 
-TODO
+Criando um índice simples. A estrutura usada por padrão é a _btree_
+
+```sql
+CREATE INDEX consumer_phoneidx1 ON consumer_phone (no_phone);
+```
+
+Usando concurrently. Não gera lock para insert.
+
+```sql
+CREATE INDEX CONCURENTLY consumer_orderidx1 ON consumer_order (no_phone);
+```
+
+Usando funções na criação de index
+
+```sql
+CREATE INDEX CONCURENTLY consumeridx1 ON consumer (lower(ds_name));
+```
+
+Índices parciais
+
+```sql
+CREATE INDEX CONCURENTLY consumeridx2 ON consumer (id_consumer, ds_document) WHERE ds_country='BRA';
+```
+
+Criando colunas unique com regras
+
+```sql
+CREATE UNIQUE INDEX CONCURENTLY consumeridx2 ON consumer (ds_document) WHERE ds_country='BRA';
+```
 
 ## Funções
 
-TODO
+Encapsular lógicas complexas ou repetitivas.
 
 ````sql
 CREATE OR REPLACE FUNCTION 3chars(text character varying)
@@ -129,16 +169,38 @@ CREATE OR REPLACE FUNCTION 3chars(text character varying)
 $$ LANGUAGE plpgsql;
 ````
 
-Usando o atributo _Security Definer_ é possível indicar o perfil e, respectivamente, o grau de permissão que será usado na execução da função.
+Usando o atributo _Security Definer_ é possível indicar o perfil acionador e, respectivamente, o grau de permissão que será usado na execução da função.
 
-EXECUTE
+````sql
+CREATE OR REPLACE FUNCTION customer_new_column(text character varying)
+    SECURITY DEFINER
+    RETURNS character varying AS $$
+        BEGIN
+            EXECUTE FORMAT('ALTER TABLE customer ADD COLUMN % character varying(255)','text');
+        END;
+$$ LANGUAGE plpgsql;
+````
 
 ## Consultas
 
 TODO
 
 ````sql
--- CTE
+
+WITH sample as (
+    SELECT '1234567890' as document
+    UNION
+    SELECT '0987654321' as document
+)
+
+SELECT *
+FROM customer c
+WHERE EXISTS (
+    SELECT *
+    FROM sample s
+    WHERE c.ds_document = s.document
+)
+
 ````
 
 ## Clients

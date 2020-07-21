@@ -3,7 +3,7 @@
 ## Índice
 1. [Básico](/postgresql/basico#básico)
 
-    1.1. [Conectando no servidor](/postgresql/basico#conectando-no-banco)
+    1.1. [Conectando no servidor](/postgresql/basico#conectando-no-servidor)
 
     1.2. [Criando um novo banco](/postgresql/basico#criando-um-novo-banco)
 
@@ -27,4 +27,7 @@
 
 2. [Desempenho](/postgresql/desempenho#desempenho)
 
+    2.1 [Preparação]()
+
+    2.2 [Índices]
 3. [Segurança](/postgresql/seguranca#segurança)
