@@ -1,5 +1,7 @@
 # Desempenho
 
+## Considerações Gerais
+
 Para fazermos alguns testes de desempenho, precisaremos de alguma carga considerável de dados.
 
 ````sql
@@ -66,6 +68,8 @@ TODO
 
 ## Particionamento
 
+
+É possível conferir as evoluções da funcionalidade [aqui](https://wiki.postgresql.org/wiki/Table_partitioning#Resolved_Issues)
 
 
 ````sql
